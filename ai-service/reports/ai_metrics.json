@@ -1,0 +1,381 @@
+{
+  "generatedAtUtc": "2026-10-22T11:33:03.186310+00:00",
+  "mode": "demo",
+  "model": "deterministic-keyword-emoji-rules-v1",
+  "datasetDescription": "Небольшая демонстрационная выборка, 25 русских фраз. Предварительная разметка требует ручной проверки. Не является независимой научной валидацией; составлена вместе с правилами, возможна завышенная оценка.",
+  "sampleCount": 25,
+  "accuracy": 0.92,
+  "macroF1": 0.9222222222222222,
+  "labels": [
+    "happy",
+    "sad",
+    "stressed",
+    "excited",
+    "neutral"
+  ],
+  "confusionMatrix": [
+    [
+      4,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      4,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      5,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      5,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      5
+    ]
+  ],
+  "meanResponseTimeMs": 0.17708799998217728,
+  "p95ResponseTimeMs": 0.1013400000374531,
+  "latencyScope": "Sequential analyzer calls with Pydantic output validation; includes first-call overhead, excludes HTTP transport. One pass, no warmup.",
+  "predictions": [
+    {
+      "id": "t01",
+      "expectedMood": "happy",
+      "result": {
+        "mood": "happy",
+        "energy": 0.65,
+        "valence": 0.7,
+        "themes": [],
+        "confidence": 0.825
+      },
+      "latencyMs": 2.820599999722617
+    },
+    {
+      "id": "t02",
+      "expectedMood": "happy",
+      "result": {
+        "mood": "happy",
+        "energy": 0.65,
+        "valence": 0.7,
+        "themes": [
+          "walking"
+        ],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.10380000003351597
+    },
+    {
+      "id": "t03",
+      "expectedMood": "happy",
+      "result": {
+        "mood": "happy",
+        "energy": 0.65,
+        "valence": 0.7,
+        "themes": [],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.0915000000532018
+    },
+    {
+      "id": "t04",
+      "expectedMood": "happy",
+      "result": {
+        "mood": "happy",
+        "energy": 0.65,
+        "valence": 0.7,
+        "themes": [
+          "comedy"
+        ],
+        "confidence": 0.825
+      },
+      "latencyMs": 0.07230000028357608
+    },
+    {
+      "id": "t05",
+      "expectedMood": "happy",
+      "result": {
+        "mood": "neutral",
+        "energy": 0.5,
+        "valence": 0.0,
+        "themes": [],
+        "confidence": 0.35
+      },
+      "latencyMs": 0.06179999945743475
+    },
+    {
+      "id": "t06",
+      "expectedMood": "sad",
+      "result": {
+        "mood": "sad",
+        "energy": 0.25,
+        "valence": -0.65,
+        "themes": [],
+        "confidence": 0.85
+      },
+      "latencyMs": 0.06490000032499665
+    },
+    {
+      "id": "t07",
+      "expectedMood": "sad",
+      "result": {
+        "mood": "sad",
+        "energy": 0.25,
+        "valence": -0.65,
+        "themes": [
+          "music"
+        ],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.07030000051599927
+    },
+    {
+      "id": "t08",
+      "expectedMood": "sad",
+      "result": {
+        "mood": "sad",
+        "energy": 0.25,
+        "valence": -0.65,
+        "themes": [],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.060399999711080454
+    },
+    {
+      "id": "t09",
+      "expectedMood": "sad",
+      "result": {
+        "mood": "sad",
+        "energy": 0.25,
+        "valence": -0.65,
+        "themes": [
+          "reading"
+        ],
+        "confidence": 0.825
+      },
+      "latencyMs": 0.06260000009206124
+    },
+    {
+      "id": "t10",
+      "expectedMood": "sad",
+      "result": {
+        "mood": "neutral",
+        "energy": 0.5,
+        "valence": 0.0,
+        "themes": [],
+        "confidence": 0.35
+      },
+      "latencyMs": 0.07579999964946182
+    },
+    {
+      "id": "t11",
+      "expectedMood": "stressed",
+      "result": {
+        "mood": "stressed",
+        "energy": 0.2,
+        "valence": -0.4,
+        "themes": [
+          "spider-man",
+          "relax"
+        ],
+        "confidence": 0.825
+      },
+      "latencyMs": 0.09140000020124717
+    },
+    {
+      "id": "t12",
+      "expectedMood": "stressed",
+      "result": {
+        "mood": "stressed",
+        "energy": 0.4,
+        "valence": -0.4,
+        "themes": [],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.06479999956354732
+    },
+    {
+      "id": "t13",
+      "expectedMood": "stressed",
+      "result": {
+        "mood": "stressed",
+        "energy": 0.2,
+        "valence": -0.4,
+        "themes": [],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.058799999351322185
+    },
+    {
+      "id": "t14",
+      "expectedMood": "stressed",
+      "result": {
+        "mood": "stressed",
+        "energy": 0.4,
+        "valence": -0.4,
+        "themes": [],
+        "confidence": 0.825
+      },
+      "latencyMs": 0.05909999981668079
+    },
+    {
+      "id": "t15",
+      "expectedMood": "stressed",
+      "result": {
+        "mood": "stressed",
+        "energy": 0.2,
+        "valence": -0.4,
+        "themes": [],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.05710000004910398
+    },
+    {
+      "id": "t16",
+      "expectedMood": "excited",
+      "result": {
+        "mood": "excited",
+        "energy": 0.9,
+        "valence": 0.8,
+        "themes": [],
+        "confidence": 0.825
+      },
+      "latencyMs": 0.07420000019919826
+    },
+    {
+      "id": "t17",
+      "expectedMood": "excited",
+      "result": {
+        "mood": "excited",
+        "energy": 0.9,
+        "valence": 0.8,
+        "themes": [],
+        "confidence": 0.825
+      },
+      "latencyMs": 0.05650000002788147
+    },
+    {
+      "id": "t18",
+      "expectedMood": "excited",
+      "result": {
+        "mood": "excited",
+        "energy": 0.9,
+        "valence": 0.8,
+        "themes": [
+          "sport"
+        ],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.0642000004518195
+    },
+    {
+      "id": "t19",
+      "expectedMood": "excited",
+      "result": {
+        "mood": "excited",
+        "energy": 0.9,
+        "valence": 0.8,
+        "themes": [],
+        "confidence": 0.825
+      },
+      "latencyMs": 0.06399999983841553
+    },
+    {
+      "id": "t20",
+      "expectedMood": "excited",
+      "result": {
+        "mood": "excited",
+        "energy": 0.9,
+        "valence": 0.8,
+        "themes": [],
+        "confidence": 0.6
+      },
+      "latencyMs": 0.05639999926643213
+    },
+    {
+      "id": "t21",
+      "expectedMood": "neutral",
+      "result": {
+        "mood": "neutral",
+        "energy": 0.5,
+        "valence": 0.0,
+        "themes": [
+          "science-fiction",
+          "reading"
+        ],
+        "confidence": 0.35
+      },
+      "latencyMs": 0.055699999393254984
+    },
+    {
+      "id": "t22",
+      "expectedMood": "neutral",
+      "result": {
+        "mood": "neutral",
+        "energy": 0.5,
+        "valence": 0.0,
+        "themes": [
+          "music",
+          "jazz"
+        ],
+        "confidence": 0.35
+      },
+      "latencyMs": 0.06170000051497482
+    },
+    {
+      "id": "t23",
+      "expectedMood": "neutral",
+      "result": {
+        "mood": "neutral",
+        "energy": 0.5,
+        "valence": 0.0,
+        "themes": [],
+        "confidence": 0.35
+      },
+      "latencyMs": 0.06030000076862052
+    },
+    {
+      "id": "t24",
+      "expectedMood": "neutral",
+      "result": {
+        "mood": "neutral",
+        "energy": 0.5,
+        "valence": 0.0,
+        "themes": [
+          "music"
+        ],
+        "confidence": 0.35
+      },
+      "latencyMs": 0.056400000175926834
+    },
+    {
+      "id": "t25",
+      "expectedMood": "neutral",
+      "result": {
+        "mood": "neutral",
+        "energy": 0.5,
+        "valence": 0.0,
+        "themes": [
+          "reading"
+        ],
+        "confidence": 0.35
+      },
+      "latencyMs": 0.06260000009206124
+    }
+  ]
+}

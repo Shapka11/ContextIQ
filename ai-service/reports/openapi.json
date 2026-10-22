@@ -1,0 +1,533 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ContextIQ AI service",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal/analyze": {
+      "post": {
+        "summary": "Analyze",
+        "operationId": "analyze_internal_analyze_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MoodAnalysis"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal/audio-features": {
+      "post": {
+        "summary": "Audio Features",
+        "operationId": "audio_features_internal_audio_features_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_audio_features_internal_audio_features_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudioFeatures"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/internal/rank": {
+      "post": {
+        "summary": "Rank",
+        "operationId": "rank_internal_rank_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RankRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RankedItem"
+                  },
+                  "type": "array",
+                  "title": "Response Rank Internal Rank Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnalyzeRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 8000,
+            "title": "Text",
+            "default": ""
+          },
+          "emoji": {
+            "type": "string",
+            "maxLength": 100,
+            "title": "Emoji",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "AnalyzeRequest"
+      },
+      "AudioFeatures": {
+        "properties": {
+          "durationSeconds": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Durationseconds"
+          },
+          "sampleRate": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Samplerate"
+          },
+          "rms": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Rms"
+          },
+          "peakAmplitude": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Peakamplitude"
+          },
+          "dominantFrequencyHz": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Dominantfrequencyhz"
+          },
+          "spectralCentroidHz": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Spectralcentroidhz"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "durationSeconds",
+          "sampleRate",
+          "rms",
+          "peakAmplitude",
+          "dominantFrequencyHz",
+          "spectralCentroidHz"
+        ],
+        "title": "AudioFeatures"
+      },
+      "Body_audio_features_internal_audio_features_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File",
+            "description": "PCM WAV mono/stereo"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_audio_features_internal_audio_features_post"
+      },
+      "CatalogItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 300,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "movie",
+              "music",
+              "book",
+              "activity"
+            ],
+            "title": "Category"
+          },
+          "tags": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Tags"
+          },
+          "moods": {
+            "items": {
+              "$ref": "#/components/schemas/Mood"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Moods"
+          },
+          "energy": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Energy"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "category",
+          "tags",
+          "moods",
+          "energy"
+        ],
+        "title": "CatalogItem"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Mood": {
+        "type": "string",
+        "enum": [
+          "happy",
+          "sad",
+          "stressed",
+          "excited",
+          "neutral"
+        ],
+        "title": "Mood"
+      },
+      "MoodAnalysis": {
+        "properties": {
+          "mood": {
+            "$ref": "#/components/schemas/Mood"
+          },
+          "energy": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Energy"
+          },
+          "valence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": -1.0,
+            "title": "Valence"
+          },
+          "themes": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 30,
+            "title": "Themes"
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "description": "Heuristic certainty in demo mode; not a calibrated probability"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mood",
+          "energy",
+          "valence",
+          "themes",
+          "confidence"
+        ],
+        "title": "MoodAnalysis"
+      },
+      "Preferences": {
+        "properties": {
+          "categories": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "movie",
+                "music",
+                "book",
+                "activity"
+              ]
+            },
+            "type": "array",
+            "maxItems": 4,
+            "title": "Categories"
+          },
+          "tags": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Tags"
+          },
+          "seenIds": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 10000,
+            "title": "Seenids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Preferences"
+      },
+      "RankRequest": {
+        "properties": {
+          "analysis": {
+            "$ref": "#/components/schemas/MoodAnalysis"
+          },
+          "preferences": {
+            "$ref": "#/components/schemas/Preferences"
+          },
+          "candidates": {
+            "items": {
+              "$ref": "#/components/schemas/CatalogItem"
+            },
+            "type": "array",
+            "maxItems": 1000,
+            "title": "Candidates"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "analysis",
+          "candidates"
+        ],
+        "title": "RankRequest"
+      },
+      "RankedItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Id"
+          },
+          "score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Score"
+          },
+          "components": {
+            "$ref": "#/components/schemas/ScoreComponents"
+          },
+          "explanation": {
+            "type": "string",
+            "title": "Explanation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "score",
+          "components",
+          "explanation"
+        ],
+        "title": "RankedItem"
+      },
+      "ScoreComponents": {
+        "properties": {
+          "moodMatch": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Moodmatch"
+          },
+          "preferenceMatch": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Preferencematch"
+          },
+          "contextMatch": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Contextmatch"
+          },
+          "novelty": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Novelty"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "moodMatch",
+          "preferenceMatch",
+          "contextMatch",
+          "novelty"
+        ],
+        "title": "ScoreComponents"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

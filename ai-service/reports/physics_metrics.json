@@ -1,0 +1,223 @@
+{
+  "generatedAtUtc": "2026-10-22T11:32:32.744987+00:00",
+  "sampleRate": 16000,
+  "durationSeconds": 2.0,
+  "encoding": "PCM16, round(A*sin*32767), decoded /32768",
+  "frequencyToleranceHz": 5,
+  "rmsTolerance": 5e-05,
+  "checksPassed": true,
+  "syntheticSignals": [
+    {
+      "name": "sine_440Hz_A0.1",
+      "knownFrequencyHz": 440.0,
+      "inputAmplitude": 0.1,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.07070931099996748,
+        "peakAmplitude": 0.100006103515625,
+        "dominantFrequencyHz": 440.0,
+        "spectralCentroidHz": 443.64655791447774
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.07071067811865475,
+      "absoluteRmsError": 1.3671186872704633e-06,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_440Hz_A0.25",
+      "knownFrequencyHz": 440.0,
+      "inputAmplitude": 0.25,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.17677084495383857,
+        "peakAmplitude": 0.25,
+        "dominantFrequencyHz": 440.0,
+        "spectralCentroidHz": 441.41252715748806
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.17677669529663687,
+      "absoluteRmsError": 5.850342798291441e-06,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_440Hz_A0.5",
+      "knownFrequencyHz": 440.0,
+      "inputAmplitude": 0.5,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.3535423418350307,
+        "peakAmplitude": 0.5,
+        "dominantFrequencyHz": 440.0,
+        "spectralCentroidHz": 440.6786839245235
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.35355339059327373,
+      "absoluteRmsError": 1.1048758243037415e-05,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_440Hz_A0.75",
+      "knownFrequencyHz": 440.0,
+      "inputAmplitude": 0.75,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.5303121514396851,
+        "peakAmplitude": 0.749969482421875,
+        "dominantFrequencyHz": 440.0,
+        "spectralCentroidHz": 440.46003983277404
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.5303300858899106,
+      "absoluteRmsError": 1.7934450225465248e-05,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_440Hz_A1",
+      "knownFrequencyHz": 440.0,
+      "inputAmplitude": 1.0,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.7070853038767543,
+        "peakAmplitude": 0.999969482421875,
+        "dominantFrequencyHz": 440.0,
+        "spectralCentroidHz": 440.3816861978417
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.7071067811865475,
+      "absoluteRmsError": 2.1477309793183075e-05,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_880Hz_A0.1",
+      "knownFrequencyHz": 880.0,
+      "inputAmplitude": 0.1,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.07071016227886011,
+        "peakAmplitude": 0.100006103515625,
+        "dominantFrequencyHz": 880.0,
+        "spectralCentroidHz": 882.0352332404369
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.07071067811865475,
+      "absoluteRmsError": 5.158397946430915e-07,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_880Hz_A0.25",
+      "knownFrequencyHz": 880.0,
+      "inputAmplitude": 0.25,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.17676993317961207,
+        "peakAmplitude": 0.25,
+        "dominantFrequencyHz": 880.0,
+        "spectralCentroidHz": 881.0547190747575
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.17677669529663687,
+      "absoluteRmsError": 6.762117024800007e-06,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_880Hz_A0.5",
+      "knownFrequencyHz": 880.0,
+      "inputAmplitude": 0.5,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.3535437687846422,
+        "peakAmplitude": 0.5,
+        "dominantFrequencyHz": 880.0,
+        "spectralCentroidHz": 880.4048730616884
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.35355339059327373,
+      "absoluteRmsError": 9.621808631510298e-06,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_880Hz_A0.75",
+      "knownFrequencyHz": 880.0,
+      "inputAmplitude": 0.75,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.5303121666701393,
+        "peakAmplitude": 0.749969482421875,
+        "dominantFrequencyHz": 880.0,
+        "spectralCentroidHz": 880.2795141636426
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.5303300858899106,
+      "absoluteRmsError": 1.791921977134514e-05,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    },
+    {
+      "name": "sine_880Hz_A1",
+      "knownFrequencyHz": 880.0,
+      "inputAmplitude": 1.0,
+      "features": {
+        "durationSeconds": 2.0,
+        "sampleRate": 16000,
+        "rms": 0.7070868027120145,
+        "peakAmplitude": 0.999969482421875,
+        "dominantFrequencyHz": 880.0,
+        "spectralCentroidHz": 880.1876519487457
+      },
+      "fftBinWidthHz": 0.5,
+      "absoluteFrequencyErrorHz": 0.0,
+      "relativeFrequencyError": 0.0,
+      "expectedRms": 0.7071067811865475,
+      "absoluteRmsError": 1.9978474532944546e-05,
+      "rmsWithinTolerance": true,
+      "frequencyWithinTolerance": true
+    }
+  ],
+  "realRecordings": [],
+  "recordingErrors": [],
+  "realRecordingsNote": "No real recordings supplied",
+  "graphs": [
+    "reports/graphs/sine_440Hz_A0.5_waveform.png",
+    "reports/graphs/sine_440Hz_A0.5_spectrum.png",
+    "reports/graphs/sine_440Hz_A0.5_spectrogram.png",
+    "reports/graphs/sine_880Hz_A0.5_waveform.png",
+    "reports/graphs/sine_880Hz_A0.5_spectrum.png",
+    "reports/graphs/sine_880Hz_A0.5_spectrogram.png",
+    "reports/graphs/rms_vs_amplitude.png"
+  ]
+}
