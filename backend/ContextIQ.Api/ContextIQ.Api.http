@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:5080
+@baseUrl = http://localhost:5000
 
 ### Guest session
 POST {{baseUrl}}/api/sessions/guest

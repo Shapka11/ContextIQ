@@ -3,3 +3,15 @@
 __pycache__/
 .env
 *.tmp
+**/node_modules/
+**/dist/
+**/bin/
+**/obj/
+**/.pytest_cache/
+**/test-results/
+**/playwright-report/
+**/*.db
+**/*.db-shm
+**/*.db-wal
+.local/
+.local-*.log

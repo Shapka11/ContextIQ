@@ -14,7 +14,7 @@ dotnet build
 dotnet run --project .\ContextIQ.Api --launch-profile http
 ```
 
-Swagger: http://localhost:5080/swagger. В Development используется SQLite, файл `ContextIQ.Api/contextiq.db`. Миграции и импорт `ai-service/data/catalog.json` выполняются при запуске. Python запускается отдельно по инструкции в `ai-service/README.md`.
+Swagger: http://localhost:5000/swagger. В Development используется SQLite, файл `ContextIQ.Api/contextiq.db`. Миграции и импорт `ai-service/data/catalog.json` выполняются при запуске. Python запускается отдельно по инструкции в `ai-service/README.md`.
 
 ## Настройки
 
@@ -73,6 +73,10 @@ dotnet test
 Используются отдельная SQLite и подставной Python API, без LLM-вызовов.
 
 ## Docker
+
+Общий стек (React + backend + Python + PostgreSQL) из корня: `docker compose up --build`.
+Backend доступен на порту 5000, внутри Docker — 8080. Смотрите [корневой README](../README.md).
+Локальный `backend/compose.yaml` оставлен для отдельной разработки backend с PostgreSQL 18; общий проверенный стек использует PostgreSQL 17 и отдельный volume.
 
 Из корня репозитория:
 

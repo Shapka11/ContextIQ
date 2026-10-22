@@ -18,6 +18,7 @@ export const sessionStore = {
       )
         return raw as GuestSession
     } catch {
+      return null
     }
     return null
   },

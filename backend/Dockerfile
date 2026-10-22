@@ -8,6 +8,7 @@ RUN dotnet publish backend/ContextIQ.Api/ContextIQ.Api.csproj -c Release --no-re
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 COPY --from=build /app .
 ENV ASPNETCORE_HTTP_PORTS=8080
 USER $APP_UID

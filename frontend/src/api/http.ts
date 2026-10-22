@@ -33,7 +33,7 @@ export async function http<T>(path: string, options: RequestInit = {}): Promise<
     headers.set('Content-Type', 'application/json')
   try {
     const response = await fetch(
-      `${(import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000').replace(/\/$/, '')}${path}`,
+      `${(import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')}${path}`,
       { ...options, headers, signal: controller.signal },
     )
     if (!response.ok) {

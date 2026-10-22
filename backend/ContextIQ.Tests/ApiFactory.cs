@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -65,6 +66,17 @@ public sealed class ApiFactory : WebApplicationFactory<Program>
 {
     private readonly string databasePath = Path.Combine(AppContext.BaseDirectory, $"test-{Guid.NewGuid():N}.db");
     public PythonStub Python { get; } = new();
+    public bool SimulateTransientDatabaseFailure { get; set; }
+
+    private sealed class DatabaseFailureInterceptor(Func<bool> enabled) : SaveChangesInterceptor
+    {
+        public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
+            DbContextEventData eventData, InterceptionResult<int> result, CancellationToken cancellationToken = default) =>
+            enabled()
+                ? ValueTask.FromException<InterceptionResult<int>>(new InvalidOperationException(
+                    "Transient database failure", new Npgsql.NpgsqlException("private database connection details")))
+                : base.SavingChangesAsync(eventData, result, cancellationToken);
+    }
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Development");
@@ -72,7 +84,8 @@ public sealed class ApiFactory : WebApplicationFactory<Program>
         {
             services.RemoveAll<DbContextOptions<SqliteAppDbContext>>();
             services.RemoveAll<SqliteAppDbContext>();
-            services.AddDbContext<SqliteAppDbContext>(o => o.UseSqlite($"Data Source={databasePath};Foreign Keys=True"));
+            services.AddDbContext<SqliteAppDbContext>(o => o.UseSqlite($"Data Source={databasePath};Foreign Keys=True")
+                .AddInterceptors(new DatabaseFailureInterceptor(() => SimulateTransientDatabaseFailure)));
             services.AddHttpClient<PythonAiClient>().ConfigurePrimaryHttpMessageHandler(() => Python);
         });
     }

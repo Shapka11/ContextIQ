@@ -32,7 +32,7 @@ export function AudioAnalysisPanel({ features }: { features: AudioFeatures }) {
   ]
   return (
     <section className="audio-analysis" aria-label="Физические характеристики звука">
-      <h3>{DEMO_MODE ? 'Тестовый сигнал: синус 440 Гц, 2 с' : 'Твой голос в числах'}</h3>
+      <h3>{DEMO_MODE ? 'Тестовый сигнал: синус 440 Гц, 2 с' : 'Звук в числах'}</h3>
       {DEMO_MODE && (
         <p className="field-hint">Фиксированные данные демонстрации; не измерения вашей записи.</p>
       )}

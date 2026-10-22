@@ -41,6 +41,20 @@ export function AudioRecorder() {
             Аудио отправится после нажатия «Исследовать звук».
           </p>
           <div className="record-controls">
+            <label className="button">
+              Загрузить PCM WAV
+              <input
+                aria-label="Загрузить PCM WAV"
+                type="file"
+                accept=".wav,audio/wav"
+                disabled={audio.recording || audio.starting || analysis.isPending}
+                onChange={(event) => {
+                  const file = event.target.files?.[0]
+                  if (file) analysis.mutate(file)
+                  event.target.value = ''
+                }}
+              />
+            </label>
             {audio.recording ? (
               <Button type="button" variant="destructive" onClick={audio.stop}>
                 <Square size={15} /> Остановить · {Math.floor(audio.seconds / 60)}:

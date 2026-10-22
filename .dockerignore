@@ -10,5 +10,8 @@
 **/*.db-shm
 **/*.db-wal
 **/.env
-backend/reports
-ai-service/reports
+**/node_modules
+**/dist
+**/test-results
+**/.env.*
+!**/.env.example

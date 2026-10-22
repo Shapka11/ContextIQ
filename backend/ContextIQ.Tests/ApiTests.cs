@@ -11,6 +11,20 @@ namespace ContextIQ.Tests;
 
 public sealed class ApiTests
 {
+    [Fact]
+    public async Task WrappedTransientDatabaseFailure_ReturnsSafe503_AndRecovers()
+    {
+        using var app = new ApiFactory();
+        using var client = app.CreateClient();
+        app.SimulateTransientDatabaseFailure = true;
+        var response = await client.PostAsync("/api/sessions/guest", null);
+        await Problem(response, HttpStatusCode.ServiceUnavailable);
+        Assert.DoesNotContain("private database", await response.Content.ReadAsStringAsync());
+        app.SimulateTransientDatabaseFailure = false;
+        await Guest(client);
+        await app.WithDb(async db => Assert.Equal(1, await db.Users.CountAsync()));
+    }
+
     private static async Task<GuestSessionResponse> Guest(HttpClient client)
     {
         using var response = await client.PostAsync("/api/sessions/guest", null);

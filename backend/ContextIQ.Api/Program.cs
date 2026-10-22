@@ -127,18 +127,24 @@ app.UseExceptionHandler(errorApp => errorApp.Run(async ctx =>
     {
         ApiException a => a.StatusCode,
         BadHttpRequestException b => b.StatusCode,
+        Npgsql.NpgsqlException or Microsoft.Data.Sqlite.SqliteException or DbUpdateException or
+            InvalidOperationException { InnerException: Npgsql.NpgsqlException } => 503,
         _ => 500
     };
     var title = ex switch
     {
         ApiException a => a.Title,
         BadHttpRequestException => "Invalid request",
+        Npgsql.NpgsqlException or Microsoft.Data.Sqlite.SqliteException or DbUpdateException or
+            InvalidOperationException { InnerException: Npgsql.NpgsqlException } => "Database unavailable",
         _ => "Internal server error"
     };
     var detail = ex switch
     {
         ApiException a => a.Message,
         BadHttpRequestException => "Check the JSON, query parameters, content type or multipart file size.",
+        Npgsql.NpgsqlException or Microsoft.Data.Sqlite.SqliteException or DbUpdateException or
+            InvalidOperationException { InnerException: Npgsql.NpgsqlException } => "The database operation could not be completed. Please try again later.",
         _ => "The request could not be completed. Contact support with the traceId."
     };
     if (status >= 500)
