@@ -1,6 +1,5 @@
 import io
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -8,7 +7,6 @@ import pytest
 from scipy.io import wavfile
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULTS = []
 
 
 @pytest.fixture
@@ -30,17 +28,3 @@ def sine():
 @pytest.fixture
 def catalog():
     return json.loads((ROOT / "data/catalog.json").read_text(encoding="utf-8"))
-
-
-def pytest_runtest_logreport(report):
-    if report.when == "call" or (report.when in ("setup", "teardown") and report.failed):
-        RESULTS.append({"test": report.nodeid, "phase": report.when, "outcome": report.outcome, "durationSeconds": report.duration})
-
-
-def pytest_sessionfinish(session, exitstatus):
-    report_dir = ROOT / "reports"
-    report_dir.mkdir(exist_ok=True)
-    payload = {"generatedAtUtc": datetime.now(timezone.utc).isoformat(), "exitCode": int(exitstatus),
-               "passed": sum(row["outcome"] == "passed" for row in RESULTS),
-               "failed": sum(row["outcome"] == "failed" for row in RESULTS), "tests": RESULTS}
-    (report_dir / "test_results.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")

@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:5080
+
+### Guest session
+POST {{baseUrl}}/api/sessions/guest
+
+> {% client.global.set("guestToken", response.body.token); %}
+
+### Profile
+GET {{baseUrl}}/api/profile
+Authorization: Bearer {{guestToken}}
+
+### Update preferences
+PATCH {{baseUrl}}/api/profile
+Authorization: Bearer {{guestToken}}
+Content-Type: application/json
+
+{"favoriteGenres":["relax","classical"],"dislikedGenres":["rock"],"favoriteCategories":["music"]}
+
+### Analyze and recommend
+POST {{baseUrl}}/api/checkins
+Authorization: Bearer {{guestToken}}
+Content-Type: application/json
+
+{"text":"Я устал, хочу отдохнуть","emoji":"😴"}
+
+> {% client.global.set("recommendationId", response.body.recommendations[0].id); %}
+
+### Feedback
+POST {{baseUrl}}/api/feedback
+Authorization: Bearer {{guestToken}}
+Content-Type: application/json
+
+{"recommendationId":"{{recommendationId}}","rating":1}
+
+### History
+GET {{baseUrl}}/api/history?page=1&pageSize=20
+Authorization: Bearer {{guestToken}}
+
+### Catalog
+GET {{baseUrl}}/api/catalog
+
+### Health
+GET {{baseUrl}}/api/health
+
+### Delete profile
+DELETE {{baseUrl}}/api/profile
+Authorization: Bearer {{guestToken}}

@@ -1,0 +1,14 @@
+.git
+.idea
+.venv
+**/.venv
+**/__pycache__
+**/bin
+**/obj
+**/.local
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/.env
+backend/reports
+ai-service/reports

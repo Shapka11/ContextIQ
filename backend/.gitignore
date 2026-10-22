@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+.local/
+**/*.db
+**/*.db-shm
+**/*.db-wal
+.env
+reports/
+TestResults/
+*.log
